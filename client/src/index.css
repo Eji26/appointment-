@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+    /* Color Palette 1: Navy & Gold (Primary Theme) */
+    --color-brand-navy: #001F3F;
+    --color-brand-cream: #FDFBF7;
+    --color-brand-gold: #D4AF37;
+    --color-brand-gold-light: #E5C76B;
+
+    /* Color Palette 2: Emerald & Taupe */
+    --color-luxury-emerald: #0A3D62;
+    --color-luxury-taupe: #E7E0D8;
+    --color-luxury-copper: #B87333;
+
+    /* Color Palette 3: Charcoal & Rose Gold */
+    --color-pro-charcoal: #2C3E50;
+    --color-pro-slate: #34495E;
+    --color-pro-rosegold: #B76E79;
+
+    /* Global Overrides to use Navy & Gold as default brand */
+    --color-primary: var(--color-brand-navy);
+    --color-accent: var(--color-brand-gold);
+    --color-surface: var(--color-brand-cream);
+}
+
+@layer base {
+    body {
+        @apply antialiased text-brand-navy bg-brand-cream selection:bg-brand-gold/30;
+    }
+}
+
+@layer utilities {
+    .animate-blob {
+        animation: blob 7s infinite;
+    }
+
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+
+    .animate-gradient {
+        background-size: 300%;
+        animation: gradient 8s ease infinite;
+    }
+
+    .glass-card {
+        @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-xl;
+    }
+
+    .gold-shimmer {
+        background: linear-gradient(45deg,
+                #D4AF37 0%,
+                #FDFBF7 50%,
+                #D4AF37 100%);
+        background-size: 200% auto;
+        animation: shimmer 3s linear infinite;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes shimmer {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.calendar-custom {
+    @apply bg-white rounded-3xl shadow-2xl border border-brand-navy/5 overflow-hidden;
+}
